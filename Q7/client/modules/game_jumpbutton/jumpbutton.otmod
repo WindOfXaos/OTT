@@ -1,0 +1,12 @@
+Module
+  name: game_jumpbutton
+  description: Jump!
+  author: WindOfXaos
+
+  autoload: true
+  autoload-priority: 1000
+
+  sandboxed: true
+  scripts: [ jumpbutton ]
+  @onLoad: init()
+  @onUnload: terminate()

@@ -1,0 +1,12 @@
+MainWindow
+  size: 250 400
+
+  Button
+    id: jumpButton
+    !text: tr('Jump!')
+    text-auto-resize: true
+    // Add anchor point or margin to be able to change button margins
+    anchors.right: parent.right
+    anchors.top: parent.top
+    // Invoke jump() callback function after click event
+    @onClick: modules.game_jumpbutton.jump()
