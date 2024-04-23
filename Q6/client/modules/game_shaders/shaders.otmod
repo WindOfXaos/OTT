@@ -1,0 +1,10 @@
+Module
+  name: game_shaders
+  description: Dash spell shaders
+  author: WindOfXaos
+
+  autoload: true
+  autoload-priority: 1000
+  sandboxed: true
+  scripts: [ shaders ]
+  @onLoad: init()

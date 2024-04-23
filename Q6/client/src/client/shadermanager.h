@@ -31,6 +31,7 @@ class ShaderManager
 {
 public:
     enum {
+        DIRECTION_ID_UNIFORM = 9,
         ITEM_ID_UNIFORM = 10,
         MAP_CENTER_COORD = 10,
         MAP_GLOBAL_COORD = 11,
@@ -42,6 +43,7 @@ public:
 
     PainterShaderProgramPtr createShader(const std::string& name);
     PainterShaderProgramPtr createFragmentShader(const std::string& name, std::string file);
+    PainterShaderProgramPtr createShaders(const std::string& name, std::string fragFile, std::string vertFile);
     PainterShaderProgramPtr createFragmentShaderFromCode(const std::string& name, const std::string& code);
 
     PainterShaderProgramPtr createItemShader(const std::string& name, const std::string& file);

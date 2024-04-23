@@ -1,0 +1,10 @@
+Module
+  name: game_spells
+  description: Dash spell
+  author: WindOfXaos
+
+  autoload: true
+  autoload-priority: 1000
+  sandboxed: true
+  scripts: [ dash ]
+  @onLoad: init()

@@ -66,6 +66,7 @@ public:
     void setIcon(uint8 icon);
     void setSkullTexture(const std::string& filename);
     void setShieldTexture(const std::string& filename, bool blink);
+    void setShader(const PainterShaderProgramPtr& shader);
     void setEmblemTexture(const std::string& filename);
     void setTypeTexture(const std::string& filename);
     void setIconTexture(const std::string& filename);
@@ -204,6 +205,9 @@ protected:
     float m_jumpDuration;
     PointF m_jumpOffset;
     Timer m_jumpTimer;
+
+    //creature shader
+    PainterShaderProgramPtr m_shader;
 };
 
 // @bindclass

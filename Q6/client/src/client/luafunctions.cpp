@@ -310,6 +310,7 @@ void Client::registerLuaFunctions()
 
     g_lua.registerSingletonClass("g_shaders");
     g_lua.bindSingletonFunction("g_shaders", "createShader", &ShaderManager::createShader, &g_shaders);
+    g_lua.bindSingletonFunction("g_shaders", "createShaders", &ShaderManager::createShaders, &g_shaders);
     g_lua.bindSingletonFunction("g_shaders", "createFragmentShader", &ShaderManager::createFragmentShader, &g_shaders);
     g_lua.bindSingletonFunction("g_shaders", "createFragmentShaderFromCode", &ShaderManager::createFragmentShaderFromCode, &g_shaders);
     g_lua.bindSingletonFunction("g_shaders", "createItemShader", &ShaderManager::createItemShader, &g_shaders);
@@ -472,6 +473,7 @@ void Client::registerLuaFunctions()
     g_lua.bindClassMemberFunction<Creature>("setEmblemTexture", &Creature::setEmblemTexture);
     g_lua.bindClassMemberFunction<Creature>("setTypeTexture", &Creature::setTypeTexture);
     g_lua.bindClassMemberFunction<Creature>("setIconTexture", &Creature::setIconTexture);
+    g_lua.bindClassMemberFunction<Creature>("setShader", &Creature::setShader);
     g_lua.bindClassMemberFunction<Creature>("showStaticSquare", &Creature::showStaticSquare);
     g_lua.bindClassMemberFunction<Creature>("hideStaticSquare", &Creature::hideStaticSquare);
     g_lua.bindClassMemberFunction<Creature>("isWalking", &Creature::isWalking);

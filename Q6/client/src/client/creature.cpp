@@ -30,6 +30,7 @@
 #include "effect.h"
 #include "luavaluecasts.h"
 #include "lightview.h"
+#include "shadermanager.h"
 
 #include <framework/graphics/graphics.h>
 #include <framework/core/eventdispatcher.h>
@@ -102,9 +103,24 @@ void Creature::draw(const Point& dest, float scaleFactor, bool animate, LightVie
     }
 }
 
+void Creature::setShader(const PainterShaderProgramPtr& shader)
+{
+    if (m_shader == shader)
+        return;
+
+    m_shader = shader;
+}
+
 void Creature::internalDrawOutfit(Point dest, float scaleFactor, bool animateWalk, bool animateIdle, Otc::Direction direction, LightView *lightView)
 {
     g_painter->setColor(m_outfitColor);
+
+    // Binding the custom shader and setting its uniforms
+    if (m_shader) {
+        m_shader->bind();
+        m_shader->setUniformValue(ShaderManager::DIRECTION_ID_UNIFORM, direction);
+        g_painter->setShaderProgram(m_shader);
+    }
 
     // outfit is a real creature
     if(m_outfit.getCategory() == ThingCategoryCreature) {
@@ -190,6 +206,7 @@ void Creature::internalDrawOutfit(Point dest, float scaleFactor, bool animateWal
         type->draw(dest - (getDisplacement() * scaleFactor), scaleFactor, 0, 0, 0, 0, animationPhase, lightView);
     }
 
+    g_painter->resetShaderProgram();
     g_painter->resetColor();
 }
 

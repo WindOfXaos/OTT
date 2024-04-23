@@ -83,6 +83,37 @@ PainterShaderProgramPtr ShaderManager::createFragmentShader(const std::string& n
     return shader;
 }
 
+PainterShaderProgramPtr ShaderManager::createShaders(const std::string& name, std::string fragFile, std::string vertFile)
+{
+    PainterShaderProgramPtr shader = createShader(name);
+    if (!shader)
+        return nullptr;
+
+
+    vertFile = g_resources.guessFilePath(vertFile, "vert");
+    if (!shader->addShaderFromSourceFile(Shader::Vertex, vertFile)) {
+        g_logger.error(stdext::format("unable to load vertex shader '%s' from source file '%s'", name, vertFile));
+        return nullptr;
+    }
+
+    fragFile = g_resources.guessFilePath(fragFile, "frag");
+    if (!shader->addShaderFromSourceFile(Shader::Fragment, fragFile)) {
+        g_logger.error(stdext::format("unable to load fragment shader '%s' from source file '%s'", name, fragFile));
+        return nullptr;
+    }
+
+    if (!shader->link()) {
+        g_logger.error(stdext::format("unable to link shader '%s' from files '%s'", name, vertFile, fragFile));
+        return nullptr;
+    }
+
+    // Bind direction uniform
+    shader->bindUniformLocation(DIRECTION_ID_UNIFORM, "u_Direction");
+
+    m_shaders[name] = shader;
+    return shader;
+}
+
 PainterShaderProgramPtr ShaderManager::createFragmentShaderFromCode(const std::string& name, const std::string& code)
 {
     PainterShaderProgramPtr shader = createShader(name);
