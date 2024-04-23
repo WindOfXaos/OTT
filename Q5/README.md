@@ -21,7 +21,7 @@ local area = {
 ```
 But unfortunately this did not come as expected for some reason
 
-
+https://github.com/WindOfXaos/OTT/assets/52869398/8513af0c-6129-433c-b1a7-3573a7611dd9
 
 So I ended up with this area, which is one tile away from the solution
 ```lua
@@ -36,3 +36,4 @@ local area = {
 }
 ```
 
+https://github.com/WindOfXaos/OTT/assets/52869398/5bf949f1-9b0f-4702-b877-6cf5b3e78e8b
