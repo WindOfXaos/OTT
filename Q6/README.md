@@ -51,7 +51,7 @@ function init()
 end
 ```
 
-
+https://github.com/WindOfXaos/OTT/assets/52869398/9ecdf2a8-d090-4674-a55c-77b19b16c93f
 
 ## Applying Effects using Shaders
 ### Adding the Red Outline
@@ -385,7 +385,7 @@ void main() {
 
 Now to the final result
 
-
+https://github.com/WindOfXaos/OTT/assets/52869398/81a412d2-ab72-46a0-b9a4-0619a885bbac
 
 Probably it looks like this because we have one texture for all poses of the outfit like the this image of Link's 2D sprite
 ![example](../.media/link_texture_example.png)
