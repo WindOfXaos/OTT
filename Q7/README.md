@@ -77,3 +77,4 @@ MainWindow
 
 Here is a video of the button jumping tirelessly
 
+https://github.com/WindOfXaos/OTT/assets/52869398/deb3d3d1-f4c0-41c0-a633-2bb2d873da91
