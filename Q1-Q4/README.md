@@ -1,6 +1,19 @@
 # Fix or improve the implementation of the below methods
 
 ## Q1
+```lua
+local function releaseStorage(player)  
+	player:setStorageValue(1000, -1)  
+end  
+  
+function onLogout(player)  
+	if player:getStorageValue(1000) == 1 then  
+		addEvent(releaseStorage, 1000, player)  
+	end
+	
+	return true  
+end  
+```
 Player storages contain volatile in-memory data
 like maybe `dailyRewardAvailable`, `numberOfOutfits`, etc... so when the player logsout
 we want to free this memory since it is not needed anymore.
@@ -49,7 +62,7 @@ function printSmallGuildNames(memberCount)
 	local selectGuildQuery = "SELECT name FROM guilds WHERE max_members < %d;"  
 	local resultId = db.storeQuery(string.format(selectGuildQuery, memberCount))  
 	local guildName = result.getString("name")  
-	print(guildName)
+	print(guildName)  
 end  
 ```
 The main issue here is `resultId` is never used to get results, to get actual results we need to call `result.getString(resultId, "name")` to get one record after making sure that `resutlId != nill`, and to fetch all results we need to chain multiple `result.getString() ` and `result.next(resultId)` like this
@@ -92,7 +105,16 @@ end
 
 ## Q3
 ```lua
-function do_sth_with_PlayerParty(playerId, membername)
+function do_sth_with_PlayerParty(playerId, membername)  
+	player = Player(playerId)  
+	local party = player:getParty()  
+	  
+	for k,v in pairs(party:getMembers()) do  
+		if v == Player(membername) then  
+			party:removeMember(Player(membername))
+		end
+	end
+end
 ```
 The function declaration needs some modifications to follow the code convention, we can give it a more descriptive name, and also use camelCase for `membername`
 ```lua
