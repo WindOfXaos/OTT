@@ -1,6 +1,7 @@
 # Q6
 Reproduce the following example using TFS & OTC
 
+https://github.com/WindOfXaos/OTT/assets/52869398/c1b5a902-b2a7-44bc-93cb-ac97de8a635b
 
 
 Lets break down the reproduction of the dash spell into two main parts
